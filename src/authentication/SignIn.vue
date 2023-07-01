@@ -12,7 +12,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
-    <a href="./sign-up">Sign Up now!</a>
+    <a href="/signup">Sign Up now!</a>
     <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
     <div v-if="successMessage" class="success">{{ successMessage }}</div>
   </div>
@@ -45,7 +45,7 @@ export default {
           const tokenData = response.data.token.split(' ')[1];
           const decodedToken = jwt_decode(tokenData);
           localStorage.setItem('userId', decodedToken.id);
-          this.successMessage = 'Logged in successfully';
+          this.$toast.success('Logged in successfully');
           this.$router.push('/');
           
         } else {
@@ -53,7 +53,7 @@ export default {
         }
       } catch (error) {
         console.log(error)
-        this.errorMessage = 'User or password is incorrect'
+        this.$toast.error('User or password is incorrect');
       }
     }
   }

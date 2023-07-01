@@ -1,10 +1,12 @@
 <template>
     <div class="app">
+      <div class="container mx-auto h-screen">
       <Header />
       <Carousel />
       <Main />
       <Footer />
     </div>
+  </div>
   </template>
   
   <script>

@@ -3,8 +3,8 @@
       <h1>Sign Up</h1>
       <form @submit.prevent="signup">
         <div>
-        <label for="user">User:</label>
-        <input class="form-control" type="text" v-model="user" required>
+        <label for="email">Email:</label>
+        <input class="form-control" type="text" v-model="email" required>
       </div>
       <div>
         <label for="password">Password:</label>
@@ -17,7 +17,7 @@
 
         <button type="submit"  class="btn btn-primary">Sign Up</button>
       </form>
-      <a href="/signin">Already have an account?</a>
+      <a href="./sign-in">Already have an account?</a>
       <div v-if="successMessage" class="success">{{ successMessage }}</div>
       <div v-if="errorMessage" class="alert-danger">{{ errorMessage }}</div>
     </div>
@@ -29,7 +29,7 @@
     data() {
       return {
        
-        user: '',
+        email: '',
         password: '',
         repeatPassword: '',
         errorMessage: '',
@@ -45,8 +45,8 @@
     }
       // Gọi API đăng ký và xử lý kết quả
       try {
-        const response = await axios.post('http://localhost:3000/signup', {
-          user: this.user,
+        const response = await axios.post('http://localhost:3000/signup_admin', {
+          email: this.email,
           password: this.password
         })
         // Xử lý kết quả trả về ở đây

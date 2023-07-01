@@ -1,1 +1,39 @@
+.text-container {
+    max-width: 200px; /* Đặt độ rộng tối đa */
+    overflow: hidden; /* Ẩn nội dung dư thừa */
+    text-overflow: ellipsis; /* Hiển thị dấu "..." */
+    white-space: nowrap; /* Ngăn xuống dòng */
+  }
 @import 'header';
+* {
+    -webkit-user-drag: none;
+    box-sizing: border-box;
+}
+.h-screen {
+    height: 100vh;
+}
+.container {
+    width: 100%;
+}
+@media screen and (min-width: 640px) {
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 640px;
+    }
+    }
+    @media screen and (min-width: 768px) {
+        .container {
+            max-width: 768px;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .container {
+            max-width: 1024px;
+        }
+    }
+    @media screen and (min-width: 1280px) {
+        .container {
+            max-width: 1280px;
+        }
+    }

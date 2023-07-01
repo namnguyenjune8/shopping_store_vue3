@@ -8,6 +8,6 @@ module.exports = {
     require('flowbite/plugin')
 ],
 content: [
-  "./node_modules/flowbite/**/*.js"
+  "./node_modules/flowbite/**/*.js",
 ]
 }
