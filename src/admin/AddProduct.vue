@@ -23,7 +23,7 @@
   <option value="QNU">Quần nữ</option>
 </select>
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-6" for="multiple_files">Thêm ảnh sản phẩm</label>
-<input @change="onFileChange" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file" multiple>
+<input ref="fileInput" @change="onFileChange" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file" multiple>
 
     <div class="mt-12 flex justify-center">
       <button
@@ -47,11 +47,12 @@ export default {
       price: '',
       information: '',
       category: '',
-      image: null,
+      image: '',
     };
   },
   methods: {
     saveProduct() {
+      const currentTime = new Date().toISOString();
       // Tạo một đối tượng chứa dữ liệu từ form
       const productData = {
         name: this.name,
@@ -59,28 +60,34 @@ export default {
         information: this.information,
         category: this.category,
         image: this.image,
+        timeUp: this.timeUp,
+        
       };
 
       // Gửi yêu cầu POST đến server để lưu dữ liệu
       axios.post('/addproduct', productData)
         .then(response => {
           // Xử lý kết quả thành công
+          this.$toast.success('Product saved successfully')
           console.log(response.data);
           // Reset các trường dữ liệu sau khi lưu thành công
           this.name = '';
           this.price = '';
           this.information = '';
           this.category = '';
-          this.image = null;
+          this.image = '';
+          this.timeUp = currentTime;
+          
         })
         .catch(error => {
           // Xử lý lỗi nếu có
           console.error(error);
+          this.$toast.error('Failed to save product')
         });
     },
-    onFileChange(event) {
+    onFileChange() {
       // Lưu file được chọn vào biến image
-      this.image = event.target.files[0];
+      this.image = this.$refs.fileInput.files[0];
     },
   },
 };

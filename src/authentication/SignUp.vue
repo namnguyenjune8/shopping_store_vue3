@@ -51,10 +51,10 @@
         })
         // Xử lý kết quả trả về ở đây
         if (response.status === 400 && response.data.message === 'Username already exists') {
-  this.errorMessage = 'Username already used, please choose another name';
+          this.$toast.error('Username already used, please choose another name') ;
   return;
 } else if (response.status === 200 && response.data.message === 'Sign Up Success!') {
-  this.successMessage = 'Sign Up Success';
+  this.$toast.success('Sign Up Success');
   this.errorMessage = ''; // xóa thông báo lỗi nếu có
   return;
 } else {

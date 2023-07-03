@@ -2,6 +2,7 @@ const db = require('../database/mysql');
 const multer = require('multer');
 const path = require('path');
 
+
 // Khởi tạo middleware multer để xử lý tải lên tệp ảnh
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -14,7 +15,7 @@ const storage = multer.diskStorage({
   }
 });
 
-// Cấu hình middleware multer
+// Cấu hình middleware multer 
 const upload = multer({
   storage: storage,
   limits: {
