@@ -16,10 +16,10 @@ async function findOneProduct(name) {
 
 async function saveProduct(req, res, product) {
   try {
-    const { name, price, information, category,image, timeUp } = product;
+    const { name, price, information, category, timeUp } = product;
 
     // Tiếp tục thực hiện lưu sản phẩm với đường dẫn tệp ảnh
-    db.query('INSERT INTO products_table (name, price, information, category, image, timeUp) VALUES (?, ?, ?, ?, ?, ?)', [name, price, information, category, image, timeUp], function (error) {
+    db.query('INSERT INTO products_table (name, price, information, category, timeUp) VALUES (?, ?, ?, ?, ?, ?)', [name, price, information, category, timeUp], function (error) {
       if (error) {
         console.log(error);
         return res.status(500).json({ message: 'Failed to save product' });
@@ -31,6 +31,7 @@ async function saveProduct(req, res, product) {
     return res.status(500).json({ message: 'Failed to save product' });
   }
 }
+
 
 module.exports = {
   findOneProduct,

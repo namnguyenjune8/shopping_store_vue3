@@ -5,7 +5,7 @@ const {findOneProduct, saveProduct } = require('../schema_table/products');
 
 // Endpoint POST /api/products
 router.post('/addproduct', async (req, res) => {
-  const { name, price, information, category, image} = req.body;
+  const { name, price, information, category} = req.body;
 
   // Kiểm tra xem sản phẩm có tồn tại trong cơ sở dữ liệu chưa
   const existingProduct = await findOneProduct(name);
@@ -18,7 +18,6 @@ router.post('/addproduct', async (req, res) => {
     price,
     information,
     category,
-    image,
     timeUp: new Date(),
   };
 

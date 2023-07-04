@@ -2,11 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import StoreApp from '@/components/AppStore.vue'
 import SignIn from '@/authentication/SignIn.vue'
 import SignUp from '@/authentication/SignUp.vue'
-import test from '@/components/HelloWorld.vue'
 import Admin from '@/admin/Admin.vue'
 import LoginAdmin from '@/admin/LoginAdmin.vue'
 import SignupAdmin from '@/admin/SignupAdmin.vue'
 import AddProduct from '@/admin/AddProduct.vue'
+import test from '@/admin/test.vue'
 
 const routes = [
  
@@ -33,11 +33,7 @@ const routes = [
     name: 'SignUp',
     component: SignUp
   },  
-  {
-    path: '/test',
-    name: 'test',
-    component: test
-  },  
+  
   {
     path: '/loginadmin',
     name: 'loginadmin',
@@ -66,6 +62,11 @@ const routes = [
     name: 'addproduct',
     component: AddProduct
   },  
+  {
+    path: '/admin/test',
+    name: 'test',
+    component: test
+  }, 
 ]
 
 const router = createRouter({
